@@ -47,7 +47,7 @@ pipeline {
     }
     stage('Deploy app to awo1') {
       steps {
-        sh "ssh web01 rm -rf /home/${SSHUSER}/conduit"
+        sh "ssh awo1 rm -rf /home/${SSHUSER}/conduit"
         sh "scp -r ${WORKSPACE}/conduit-ui/dist web01:/home/${SSHUSER}/conduit"
         sh "ssh awo1 sudo rm -rf ${WWWROOT}/conduit"
         sh "ssh awo1 sudo cp -r /home/${SSHUSER}/conduit ${WWWROOT}/conduit"
